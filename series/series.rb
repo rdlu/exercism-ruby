@@ -5,7 +5,7 @@ module Series
   # @param [Integer] length
   # @return [Array]
   def self.slices(series, length)
-    return [] unless (1..series.size).include?(length)
+    return [] if length < 1
     series.chars.each_cons(length).map(&:join)
   end
 end
