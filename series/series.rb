@@ -1,18 +1,10 @@
-class Series
-  # @param [String|Array] series
-  def initialize(series)
-    @digits = if series.respond_to? :chars
-                series.chars
-              else
-                series.to_a  # defensive strategy for non strings
-              end
-  end
-
+module Series
+  # @param [String] series
   # @param [Integer] length
   # @return [Array]
-  def slices(length)
-    raise ArgumentError.new "Length #{length} not in range for this series" if length > @digits.length
-
-    @digits.each_cons(length).map(&:join)
+  def self.slices(series, length)
+    raise ArgumentError.new "Length #{length} not in range for this series" if length > series.size
+    return [] if length < 1
+    series.chars.each_cons(length).map(&:join)
   end
 end
