@@ -9,7 +9,18 @@ class Queens
   end
 
   def attack?
-    @white[:i] == @black[:i] or @white[:j] == @black[:j] \
-            or (@black[:i] - @white[:i]).abs == (@black[:j] - @white[:j]).abs
+    same_row? or same_column? or same_diagonal?
+  end
+
+  def same_row?
+    @white[:i] == @black[:i]
+  end
+
+  def same_column?
+    @white[:j] == @black[:j]
+  end
+
+  def same_diagonal?
+    (@black[:i] - @white[:i]).abs == (@black[:j] - @white[:j]).abs
   end
 end
