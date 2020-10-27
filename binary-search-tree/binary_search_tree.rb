@@ -17,6 +17,8 @@ class Bst
     end
   end
 
+  
+  # @param [Proc] block
   def each(&block)
     return enum_for(:each) unless block_given?
     left.each(&block) if left
@@ -26,12 +28,14 @@ class Bst
 
   private
 
+  # @param [Numeric] new_data
   def push_left(new_data)
     left.insert(new_data)
   rescue NoMethodError
     @left = Bst.new(new_data)
   end
 
+  # @param [Numeric] new_data
   def push_right(new_data)
     right.insert(new_data)
   rescue NoMethodError
