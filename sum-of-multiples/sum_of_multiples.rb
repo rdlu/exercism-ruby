@@ -1,9 +1,13 @@
 class SumOfMultiples
 
+  # @param [Array[Numeric]] factors
   def initialize(*factors)
-    @factors = Array(factors)
+    @factors = factors
   end
 
-  def to(num)
+  # @param [Numeric] limit
+  # @return [Numeric]
+  def to(limit)
+    @factors.reject(&:zero?).flat_map { |m| (m...limit).step(m).to_a }.uniq.sum
   end
 end
