@@ -1,8 +1,15 @@
-=begin
-Write your code for the 'Matrix' exercise in this file. Make the tests in
-`matrix_test.rb` pass.
+class Matrix
+  attr_reader :rows
 
-To get started with TDD, see the `README.md` file in your
-`ruby/matrix` directory.
-=end
+  # @param [String] m_string
+  def initialize(m_string)
+    @rows = m_string.lines.map do |line|
+      line.split(' ').map(&:to_i)
+    end
+  end
 
+  # @return [Array[Numeric]]
+  def columns
+    rows.transpose
+  end
+end
